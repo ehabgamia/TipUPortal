@@ -17,6 +17,8 @@ using MvvmHelpers;
 using MCV.Portal.Localization;
 using MCV.Portal.UI.Assets;
 using MCV.Portal.Views;
+using MCV.Portal.Subject;
+using MCV.Portal.Models.Subject;
 
 namespace MCV.Portal.ViewModels
 {
@@ -36,7 +38,6 @@ namespace MCV.Portal.ViewModels
         public ICommand CreateNewUserCommand => HttpRequestCommand.Create(CreateNewUserAsync);
 
         public ObservableRangeCollection<UserListModel> Users { get; set; }
-
         public UserListModel SelectedUser
         {
             get => _selectedUser;
@@ -61,6 +62,7 @@ namespace MCV.Portal.ViewModels
             }
         }
 
+        
         public string Title => L.LocalizeWithParantheses("Users", _totalUsersCount);
 
         public UsersViewModel(IUserAppService userAppService, IProfileAppService profileService)
@@ -69,6 +71,7 @@ namespace MCV.Portal.ViewModels
             _profileService = profileService;
 
             Users = new ObservableRangeCollection<UserListModel>();
+
 
             WatchUserListChange();
 
@@ -127,6 +130,8 @@ namespace MCV.Portal.ViewModels
 
                 return Task.CompletedTask;
             });
+
+           
         }
 
         private void WatchUserListChange()

@@ -19,9 +19,9 @@ namespace MCV.Portal.Subject
             throw new NotImplementedException();
         }
 
-        public async Task<ListResultDto<SubjectListDto>> GetSubject(GetSubjectInput input)
+        public async Task<ListResultDto<SubjectListDto>> GetSubject() //GetSubjectInput input
         {
-            return await ApiClient.GetAsync<ListResultDto<SubjectListDto>>(GetEndpoint(nameof(GetSubject)), input);
+            return await ApiClient.GetAsync<ListResultDto<SubjectListDto>>(GetEndpoint(nameof(GetSubject)));
         }
     }
 }

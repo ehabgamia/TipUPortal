@@ -10,7 +10,7 @@ namespace MCV.Portal.Subject
 {
    public interface ISubjectAppService : IApplicationService
     {
-       Task<ListResultDto<SubjectListDto>> GetSubject(GetSubjectInput input);
+       Task<ListResultDto<SubjectListDto>> GetSubject(); //GetSubjectInput input
         Task CreateSubject(CreateSubjectInput input);
         Task DeleteSubject(EntityDto input);
     }

@@ -8,8 +8,8 @@
          *  - SplashActivity.cs (StartApplication method) in *.Mobile.Droid project,
          *  - AppDelegate.cs (FinishedLaunching method) in *.Mobile.iOS project.
          */
-        public static string Current = "localhost";
-        private const string LocalhostIp = "192.168.1.48";
+        public static string Current = LocalhostIp;// "localhost";
+        private const string LocalhostIp = Emulators.Android;//"192.168.1.48";
 
         public static class Emulators
         {

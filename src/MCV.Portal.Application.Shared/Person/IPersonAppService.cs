@@ -10,7 +10,7 @@ namespace MCV.Portal.Person
 {
    public interface IPersonAppService : IApplicationService
     {
-        ListResultDto<PersonListDto> GetPeople(GetPeopleInput input);
+       Task<PagedResultDto<PersonListDto>> GetPeople(GetPeopleInput input);
         Task CreatePerson(CreatePersonInput input);
         Task DeletePerson(EntityDto input);
     }

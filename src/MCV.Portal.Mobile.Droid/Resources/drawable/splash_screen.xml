@@ -1,6 +1,9 @@
 ﻿<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
   <item android:drawable="@color/splash_background"/>
-  <item>
+  <item android:width="40dp"
+android:height="750dp"
+android:gravity="center">
+     
     <bitmap
       android:gravity="center|center|clip_vertical"
       android:scaleType="centerCrop"

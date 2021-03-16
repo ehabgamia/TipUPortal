@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace MCV.Portal.Person
 {
@@ -33,23 +34,28 @@ namespace MCV.Portal.Person
             await _personRepository.DeleteAsync(input.Id);
         }
 
-        public ListResultDto<PersonListDto> GetPeople(GetPeopleInput input)
+        public async  Task<PagedResultDto<PersonListDto>> GetPeople(GetPeopleInput input)
         {
             try
             {
-                var people = _personRepository
+                var people = await  _personRepository
                .GetAll()
-               .WhereIf(
-                   !input.Filter.IsNullOrEmpty(),
-                   p => p.Name.Contains(input.Filter) ||
-                        p.Surname.Contains(input.Filter) ||
-                        p.EmailAddress.Contains(input.Filter)
-               )
-               .OrderBy(p => p.Name)
-               .ThenBy(p => p.Surname)
-               .ToList();
+               //.WhereIf(
+               //    !input.Filter.IsNullOrEmpty(),
+               //    p => p.Name.Contains(input.Filter) ||
+               //         p.Surname.Contains(input.Filter) ||
+               //         p.EmailAddress.Contains(input.Filter)
+               //)
+               //.OrderBy(p => p.Name)
+               //.ThenBy(p => p.Surname)
+               .ToListAsync();
 
-                return new ListResultDto<PersonListDto>(ObjectMapper.Map<List<PersonListDto>>(people));
+                var peopleListDtos = ObjectMapper.Map<List<PersonListDto>>(people);
+                return new PagedResultDto<PersonListDto>(2,
+                peopleListDtos
+            );
+
+                //return new ListResultDto<PersonListDto>(ObjectMapper.Map<List<PersonListDto>>(people));
             }
            catch(Exception ex)
             {

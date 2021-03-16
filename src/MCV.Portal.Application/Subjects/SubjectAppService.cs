@@ -46,7 +46,7 @@ namespace MCV.Portal.Subjects
             await _subjectRepository.DeleteAsync(input.Id);
         }
 
-        public async Task<ListResultDto<SubjectListDto>> GetSubject(GetSubjectInput input)
+        public async Task<ListResultDto<SubjectListDto>> GetSubject() //GetSubjectInput input
         {
             try
             {

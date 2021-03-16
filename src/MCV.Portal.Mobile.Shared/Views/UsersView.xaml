@@ -99,6 +99,66 @@
 
             </StackLayout>
 
+            <StackLayout Orientation="Vertical" 
+                         VerticalOptions="FillAndExpand" 
+                         HorizontalOptions="CenterAndExpand"
+                         Grid.Row="1" 
+                         Grid.Column="0">
+
+                <ListView 
+                      SeparatorVisibility="None"  
+                      HasUnevenRows="True"
+                      ItemsSource="{Binding Subjects}" 
+                      IsPullToRefreshEnabled="true"
+                      
+                      ItemAppearing="ListView_OnItemAppearing"
+                      SelectedItem="{Binding Subject, Mode=TwoWay}"
+                      CachingStrategy="RetainElement">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell >
+                                <controls:CardView  Margin="10, 5, 10, 5" Padding="10" >
+
+                                    <Grid  ColumnSpacing="16">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="Auto"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+
+
+                                        <image:CircleImage 
+                                            Source="{Binding Photo}" 
+                                            WidthRequest="70" 
+                                            Aspect="AspectFill"
+                                            HorizontalOptions="CenterAndExpand" 
+                                            BorderThickness="2"
+                                            FillColor="White"
+                                            BorderColor="{StaticResource PrimaryColor}">
+                                            <image:CircleImage.HeightRequest>70</image:CircleImage.HeightRequest>
+                                        </image:CircleImage>
+
+
+                                        <StackLayout VerticalOptions="Center" Grid.Column="1" Spacing="0">
+                                            <Label Text="{Binding SubjectName}" Font="Bold"  Style="{StaticResource ActiveLabel}" />
+
+                                            <!--<StackLayout Orientation="Horizontal">
+                                                <Label Text="{Binding Reward}"  Style="{StaticResource ActiveLabel}"/>
+                                                <Label Text="{Binding Surname}"  Style="{StaticResource ActiveLabel}"/>
+                                            </StackLayout>-->
+
+                                            <Label Text="{Binding Reward}" FontSize="{StaticResource SmallFont}"  Style="{StaticResource ActiveLabel}"/>
+
+                                        </StackLayout>
+
+                                    </Grid>
+
+                                </controls:CardView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 

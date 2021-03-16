@@ -39,10 +39,21 @@ namespace MCV.Portal.Services.Navigation
             },
             new NavigationMenuItem
             {
-                Title = L.Localize("Subject"),
+                Title = L.Localize("PhoneBook"),
                 Icon = "Settings.png",
-                ViewType = typeof(_SampleView),
-                
+                ViewType = typeof(PeopleView)
+            },
+            new NavigationMenuItem
+            {
+                Title = L.Localize("SampleView"),
+                Icon = "Settings.png",
+                ViewType = typeof(_SampleView)
+            },
+            new NavigationMenuItem
+            {
+                Title = L.Localize("Subject"),
+                Icon = "Tenants.png",
+                ViewType = typeof(SubjectView)
             }
             
             /*This is a sample menu item to guide how to add a new item.

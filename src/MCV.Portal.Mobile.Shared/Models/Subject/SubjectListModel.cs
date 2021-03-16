@@ -11,18 +11,25 @@ using System.Text;
 namespace MCV.Portal.Models.Subject
 {
     [AutoMapFrom(typeof(SubjectListDto))]
+    [AutoMapTo(typeof(SubjectListModel))]
     public class SubjectListModel : SubjectListDto, INotifyPropertyChanged
     {
-        public string SubjectN => SubjectName ;
-        
-        public new ObservableRangeCollection<SubjectListDto> Reward { get; set; }
+        public string subjectName => SubjectName ;
+        public string reward ;
+        //string email = string.Empty;
+        public string Reward
+        {
+            get => reward;
+            set => OnPropertyChanged(nameof(Reward));
+        }
+        public  ObservableRangeCollection<SubjectListDto> Subjects { get; set; }
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        protected void RaisePropertyChanged(string name)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
-        }
+        //protected void RaisePropertyChanged(string name)
+        //{
+        //    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+        //}
 
         [NotifyPropertyChangedInvocator]
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)

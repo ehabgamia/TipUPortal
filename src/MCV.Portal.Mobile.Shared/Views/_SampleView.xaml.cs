@@ -8,15 +8,24 @@ namespace MCV.Portal.Views
 	
 	public partial class _SampleView : ContentPage, IXamarinView
     {
-
-		public _SampleView ()
+        protected _SampleViewModel ViewModel => BindingContext as _SampleViewModel;
+        public _SampleView ()
 		{
 			InitializeComponent ();
-		}
+            //BindingContext = new _SampleViewModel();
+        }
 
-		public async void ListView_OnItemAppearing(object sender, ItemVisibilityEventArgs e)
-		{
-			await ((_SampleViewModel)BindingContext).LoadMoresubjectIfNeedsAsync(e.Item as SubjectListModel);
-		}
-	}
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+
+            //Update the list if needed. View Model handles this logic.
+            await ViewModel.PageAppearingAsync();
+        }
+
+        public async void ListView_OnItemAppearing(object sender, ItemVisibilityEventArgs e)
+        {
+            await ((_SampleViewModel)BindingContext).LoadMoresubjectIfNeedsAsync(e.Item as SubjectListModel);
+        }
+    }
 }

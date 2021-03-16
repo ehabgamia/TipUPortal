@@ -61,15 +61,12 @@ namespace MCV.Portal.ViewModels
             await FetchDataAsync();
         }
 
-        public async Task FetchDataAsync(string filterText = null)
+        public async Task FetchDataAsync()
         {
             await SetBusyAsync(async () =>
             {
-                var result = await _subjectAppService.GetSubject(new Subject.Dto.GetSubjectInput
-                {
-                    Filter = filterText
-                });
-
+                var result = await _subjectAppService.GetSubject();
+               
                 var subjetListModels = ObjectMapper.Map<IEnumerable<SubjectListModel>>(result.Items);
                 SelectSubjects.ReplaceRange(subjetListModels);
             });

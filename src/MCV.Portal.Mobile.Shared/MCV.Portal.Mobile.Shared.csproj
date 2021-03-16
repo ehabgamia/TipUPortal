@@ -110,6 +110,9 @@
     <Compile Update="Views\MySettingsView.xaml.cs">
       <DependentUpon>MySettingsView.xaml</DependentUpon>
     </Compile>
+    <Compile Update="Views\PeopleView.xaml.cs">
+      <DependentUpon>PeopleView.xaml</DependentUpon>
+    </Compile>
 
   </ItemGroup>
 

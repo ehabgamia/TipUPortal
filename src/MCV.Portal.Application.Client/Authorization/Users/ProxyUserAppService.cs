@@ -2,6 +2,7 @@
 using Abp.Application.Services.Dto;
 using MCV.Portal.Authorization.Users.Dto;
 using MCV.Portal.Dto;
+using MCV.Portal.Subject.Dto;
 
 namespace MCV.Portal.Authorization.Users
 {
@@ -10,6 +11,11 @@ namespace MCV.Portal.Authorization.Users
         public async Task<PagedResultDto<UserListDto>> GetUsers(GetUsersInput input)
         {
             return await ApiClient.GetAsync<PagedResultDto<UserListDto>>(GetEndpoint(nameof(GetUsers)), input);
+        }
+
+        public async Task<ListResultDto<SubjectListDto>> GetSubject() //GetSubjectInput input
+        {
+            return await ApiClient.GetAsync<ListResultDto<SubjectListDto>>(GetEndpoint(nameof(GetSubject)));
         }
 
         public async Task<FileDto> GetUsersToExcel(GetUsersToExcelInput input)
